@@ -1,0 +1,111 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 1991-2013 Altera Corporation
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, Altera MegaCore Function License 
+# Agreement, or other applicable license agreement, including, 
+# without limitation, that your use is for the sole purpose of 
+# programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the 
+# applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus II 64-Bit
+# Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+# Date created = 21:58:04  May 17, 2022
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		matrix_test_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus II software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "Cyclone III"
+set_global_assignment -name DEVICE EP3C16F484C6
+set_global_assignment -name TOP_LEVEL_ENTITY matrix_test
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION "13.0 SP1"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "21:58:04  MAY 17, 2022"
+set_global_assignment -name LAST_QUARTUS_VERSION 13.1
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
+set_global_assignment -name NOMINAL_CORE_SUPPLY_VOLTAGE 1.2V
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
+set_location_assignment PIN_Y13 -to c0
+set_location_assignment PIN_V14 -to c1
+set_location_assignment PIN_AB5 -to c2
+set_location_assignment PIN_AB8 -to c3
+set_location_assignment PIN_AB10 -to c4
+set_location_assignment PIN_AB13 -to c5
+set_location_assignment PIN_AA14 -to c6
+set_location_assignment PIN_AA15 -to c7
+set_location_assignment PIN_AA5 -to c8
+set_location_assignment PIN_AA8 -to c9
+set_location_assignment PIN_AA10 -to c10
+set_location_assignment PIN_AA13 -to c11
+set_location_assignment PIN_AB14 -to c12
+set_location_assignment PIN_AB15 -to c13
+set_location_assignment PIN_AA16 -to c14
+set_location_assignment PIN_AB16 -to c15
+set_location_assignment PIN_G21 -to clk
+set_location_assignment PIN_U7 -to f0
+set_location_assignment PIN_W6 -to f1
+set_location_assignment PIN_V8 -to f2
+set_location_assignment PIN_W10 -to f3
+set_location_assignment PIN_V11 -to f4
+set_location_assignment PIN_V12 -to f5
+set_location_assignment PIN_W13 -to f6
+set_location_assignment PIN_U14 -to f7
+set_location_assignment PIN_D2 -to rst
+set_global_assignment -name VHDL_FILE matrix_test.vhd
+set_global_assignment -name VHDL_FILE Univ_Bin_Counter.vhd
+set_global_assignment -name VHDL_FILE Test_Univ_Bin_Counter.vhd
+set_global_assignment -name VHDL_FILE Racket_ctrl.vhd
+set_location_assignment PIN_U8 -to b_down
+set_location_assignment PIN_T9 -to b_up
+set_location_assignment PIN_T10 -to b_down2
+set_location_assignment PIN_R12 -to b_up2
+set_global_assignment -name VHDL_FILE bin_to_sseg.vhd
+set_location_assignment PIN_B18 -to sP10
+set_location_assignment PIN_F15 -to sP11
+set_location_assignment PIN_A19 -to sP12
+set_location_assignment PIN_B19 -to sP13
+set_location_assignment PIN_C19 -to sP14
+set_location_assignment PIN_D19 -to sP15
+set_location_assignment PIN_G15 -to sP16
+set_location_assignment PIN_E11 -to sP20
+set_location_assignment PIN_F11 -to sP21
+set_location_assignment PIN_H12 -to sP22
+set_location_assignment PIN_H13 -to sP23
+set_location_assignment PIN_G12 -to sP24
+set_location_assignment PIN_F12 -to sP25
+set_location_assignment PIN_F13 -to sP26
+set_global_assignment -name VHDL_FILE Ball_ctrl_V2.vhd
+set_global_assignment -name VHDL_FILE IntRackBllGl.vhd
+set_global_assignment -name SIMULATION_MODE FUNCTIONAL
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST ON -section_id eda_simulation
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE "C:/Users/javil/OneDrive/Documentos/Respaldo_PC_ACER/PUJ/Ingeniería Elecrónica/Diseño de sistemas digitales/Quartus/Programas/matrix_test/Waveform1.vwf"
+set_global_assignment -name VHDL_FILE Univ_Bin_Counter_Ball.vhd
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

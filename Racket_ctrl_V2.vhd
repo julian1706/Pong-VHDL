@@ -1,0 +1,101 @@
+
+------------- RACKET CONTROL V2---------------------
+
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.NUMERIC_STD.ALL;
+--------------------------------
+
+ENTITY Racket_ctrl_V2 IS 
+    PORT(clk             : IN STD_LOGIC;
+	      rst             : IN STD_LOGIC;
+			b_up            : IN STD_LOGIC;
+			b_down          : IN STD_LOGIC;
+			racketDisplay   : OUT STD_LOGIC_VECTOR(7 DOWNTO 0));
+END ENTITY;
+------------------------------------
+
+ARCHITECTURE Control OF Racket_ctrl_V2 IS
+
+  TYPE state IS (stand, up, down);
+  
+  SIGNAL pr_state, nx_state : state := stand;
+  SIGNAL max_tick_s         : STD_LOGIC;
+  SIGNAL racket_s           : STD_LOGIC_VECTOR (7 DOWNTO 0) := "11100011";
+  SIGNAL racket_nx          : STD_LOGIC_VECTOR (7 DOWNTO 0) := "11100011";
+  SIGNAL action             : STD_LOGIC_VECTOR (1 DOWNTO 0);
+  BEGIN 
+    
+	 racketDisplay <= racket_s;
+	 action        <= b_up & b_down;
+	 
+    RacketSpeed : ENTITY work.Test_Univ_Bin_Counter
+                      PORT MAP( clk      => clk,
+							           rst      => rst,
+										  ena      => '1',
+										  syn_clr  => '0',
+										  load     => '0',
+										  up       => '1',
+										  d        =>"0000000000000000000000",
+										  max_tick => max_tick_s);
+										  
+										  
+    ----------sequential section: -----------------
+	 PROCESS (rst, clk)
+	   BEGIN
+	     IF (rst = '1')THEN
+		    pr_state <= stand;----- agregar estado reset
+		  ELSIF (rising_edge(clk))THEN 
+		    pr_state   <= nx_state;
+			 racket_s   <= racket_nx;
+			END IF;
+	  END PROCESS;
+	 ----------- combinational section: ------------
+	PROCESS (action, racket_s, racket_nx, max_tick_s, pr_state)
+     BEGIN 
+	    CASE pr_state IS
+		 
+		   WHEN stand => 
+			  racket_nx <= racket_s;
+		     IF ( max_tick_s = '1')THEN 
+			    IF(action = "01")THEN
+				   nx_state <= up;
+				  ELSIF(action = "10")THEN 
+				    nx_state <= down;
+				  ELSE 
+				    nx_state <= stand;
+				 END IF;
+			  ELSE
+			    nx_state <= stand;
+			  END IF;
+	-----------------------------------------------------		  
+			WHEN up =>
+	        racket_nx <= racket_s;
+		     IF (max_tick_s = '1')THEN 
+			    IF(racket_s = "00011111")THEN
+				   racket_nx <= "00011111";
+					nx_state <= stand;
+					ELSE
+			  	 racket_nx <= racket_s(6 DOWNTO 0) & '1';
+				 nx_state <= stand;
+				 END IF;
+			  ELSE
+			    nx_state <= up;
+			  END IF;
+	--------------------------------------------------------		  
+			WHEN down =>
+	        racket_nx <= racket_s;
+		     IF (max_tick_s = '1')THEN 
+			    IF(racket_s = "11111000")THEN
+				   racket_nx <= "11111000";
+					nx_state <= stand;
+					ELSE
+			  	 racket_nx <=  '1' & racket_s(7 DOWNTO 1);
+				 nx_state <= stand;
+				 END IF;
+			  ELSE
+			    nx_state <= down;
+			  END IF;
+	    END CASE;
+	  END PROCESS;
+	END ARCHITECTURE;  

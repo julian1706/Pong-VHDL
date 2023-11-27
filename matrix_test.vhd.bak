@@ -1,0 +1,21 @@
+-- MATRIX_TEST-----------
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+-------------------------
+
+ENTITY matrix_test IS 
+ PORT( col : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+       fil : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+		 pin : OUT STD_LOGIC );
+		 
+END ENTITY matrix_test;
+-------------------------
+
+ARCHITECTURE behavioural OF matrix_test IS 
+  SIGNAL pin_s : STD_LOGIC := '0'; 
+  
+  BEGIN 
+    pin_s <= NOT pin_s after 1s;
+	
+	END behavioural;
+	
